@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/Todos.css';
 
 const Todos = (props) => {
 

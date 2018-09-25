@@ -36,7 +36,7 @@ class App extends Component {
         <div className={'container'}>
           {
             this.state.todos.length ? <span className="new badge blue" data-badge-caption="remaing">{this.state.todos.length}</span> :
-            <span className="new badge green" data-badge-caption="All caguhtup"></span>
+            <span className="new badge green" data-badge-caption="All caguhtup"><i className="tiny material-icons">done_all</i></span>
           }
           <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />  
         </div>

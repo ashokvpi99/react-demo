@@ -1,3 +1,3 @@
 Hi All,
 
-React demo with basic installation
+React hello world example with basic required packages

@@ -34,6 +34,10 @@ class App extends Component {
         <h2 className={'center'}>Todos</h2>
         <br/>
         <div className={'container'}>
+          {
+            this.state.todos.length ? <span className="new badge blue" data-badge-caption="remaing">{this.state.todos.length}</span> :
+            <span className="new badge green" data-badge-caption="All caguhtup"></span>
+          }
           <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />  
         </div>
         <br/>

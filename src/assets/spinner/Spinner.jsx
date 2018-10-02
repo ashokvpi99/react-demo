@@ -1,7 +1,9 @@
 import React from 'react';
-import Loader from 'react-loaders';
-import 'Spinner.scss';
+import Loader from 'react-loader-spinner'
 
-const Spinner = (props) => <Loader type="square-spin" active={props.isLoading}/>;
+const Spinner = (props) => {
+    const isActive  = props.active ? <div style={{marginLeft: 500}}><Loader type="ThreeDots" color="blue" height={80} width={80} /></div>: null;
+    return isActive;
+};
 
 export default Spinner;

@@ -7,7 +7,7 @@ import { logger } from 'redux-logger';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
-import rootSaga from './sagas/Post';
+import rootSaga from './sagas/rootSaga';
 
 const Saga = createSaga();
 

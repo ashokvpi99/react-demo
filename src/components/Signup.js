@@ -15,27 +15,48 @@ class Signup extends Component {
                                     <p>Please fill in this form to create an account.</p>
                                     <hr />
                                     <div className="row">
-                                        <div className="input-field col s8">
-                                            <input type="text" name="email" required />
-                                            <label htmlFor="email"><b>Email</b></label>
+                                        <div className="input-field col s10">
+                                            <input type="text" name="name" required />
+                                            <label htmlFor="name">Name</label>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="input-field col s8">
-                                            <input type="password" name="psw" required />
-                                            <label htmlFor="psw"><b>Password</b></label>
+                                        <div className="input-field col s10" style={{marginLeft: '-13px'}}>
+                                            <input type="radio" name="gender" defaultChecked/>
+                                            <label htmlFor="always">Male</label>
+                                            &nbsp;&nbsp;
+                                            <input type="radio" name="gender" />
+                                            <label htmlFor="never">Female</label>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="input-field col s8">
-                                            <input type="password" name="pswrepeat" required />
-                                            <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
+                                        <div className="input-field col s10">
+                                            <input type="text" className="datepicker" />
+                                            <label htmlFor="dob">Date of Birth</label>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="input-field col s8">
+                                        <div className="input-field col s10">
                                             <input type="text" name="phoneno" required />
-                                            <label htmlFor="phoneno"><b>Phone Number</b></label>
+                                            <label htmlFor="phoneno">Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="input-field col s10">
+                                            <input type="text" name="email" required />
+                                            <label htmlFor="email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="input-field col s10">
+                                            <input type="password" name="psw" required />
+                                            <label htmlFor="psw">Password</label>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="input-field col s10">
+                                            <input type="password" name="pswrepeat" required />
+                                            <label htmlFor="psw-repeat">Repeat Password</label>
                                         </div>
                                     </div>
                                     <p>By creating an account you agree to our <a style={{ color: 'dodgerblue' }}>Terms &amp; Privacy</a>.</p>

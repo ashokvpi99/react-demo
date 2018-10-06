@@ -25,13 +25,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title>React</title>
+  <title>UserMa</title>
 </head>
 
 <body>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+  <script>
+      $(document).ready(function() {
+
+          $('.modal').modal();
+          //this are my init
+          $('.datepicker').datepicker({
+              autoClose: true,
+              defaultDate: new Date(),
+              setDefaultDate: true
+          });
+      });
+  </script>
   <div id="app"></div>
   <!--
       This HTML file is a template.

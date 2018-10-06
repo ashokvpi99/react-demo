@@ -49,8 +49,8 @@ class Signup extends Component {
                                     <div className="row">
                                         <div className="col s10" style={{marginBottom: 10}}>
                                             <label>Gender</label>
-                                            <select name={'gender'} onChange={this.onChangeState}>
-                                                <option value="">Choose your gender</option>
+                                            <select name={'gender'} defaultValue={''} onChange={this.onChangeState}>
+                                                <option value="" disabled>Choose your gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>

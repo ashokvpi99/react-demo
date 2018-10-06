@@ -7,7 +7,7 @@ class Nav extends Component {
             <nav>
                 <div className="nav-wrapper">
                     &nbsp; &nbsp;
-                    <Link to={'/'} className="brand-logo">UserMa</Link>
+                    <Link to={'/'} className="brand-logo">User Management</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/login'}>Login</NavLink></li>

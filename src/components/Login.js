@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            email: '',
-            psw: ''
-        };
-    }
-
-    onChangeSetState = (e) => {
-        const { name, value } = e.target;
-        this.setState({
-            [name]: value
-        })
-    };
+    // constructor(props) {
+    //     super(props);
+    //
+    //     this.state = {
+    //         email: '',
+    //         psw: ''
+    //     };
+    // }
+    //
+    // onChangeSetState = (e) => {
+    //     const { name, value } = e.target;
+    //     this.setState({
+    //         [name]: value
+    //     })
+    // };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('this.state...', this.state);
+        console.log('loginForm....', this.props.loginForm.values)
     };
     render() {
         return (
@@ -35,13 +37,13 @@ class Login extends Component {
                                     <hr />
                                     <div className="row">
                                         <div className="input-field col s8">
-                                            <input type="text" name="email" onChange={this.onChangeSetState} required />
+                                            <Field component={'input'} type="text" name="email" required />
                                             <label htmlFor="email">Email</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s8">
-                                            <input type="password" onChange={this.onChangeSetState} name="psw" required />
+                                            <Field component={'input'} type="password" name="psw" required />
                                             <label htmlFor="psw">Password</label>
                                         </div>
                                     </div>
@@ -58,4 +60,14 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const loginForm = reduxForm({
+    form: 'login' // a unique identifier for this form
+})(Login);
+
+const mapToProps = (state, props) => {
+    return {
+        loginForm: state.form.login
+    }
+};
+
+export default connect(mapToProps)(loginForm);

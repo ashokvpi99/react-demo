@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux';
 
 class Signup extends Component {
 
@@ -6,13 +8,7 @@ class Signup extends Component {
         super(props);
 
         this.state = {
-            name: '',
-            gender: '',
-            dob: '',
-            mobileNo: '',
-            email: '',
-            psw: '',
-            pswrepeat: ''
+            dob: new Date()
         };
     }
 
@@ -25,7 +21,8 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('this.state......', this.state)
+        var signUpdData = Object.assign(this.state, this.props.signUpForm.values);
+        console.log('signUpdData......', signUpdData);
     };
 
     render() {
@@ -42,18 +39,18 @@ class Signup extends Component {
                                     <hr />
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <input type="text" name="name" onChange={this.onChangeState} required />
+                                            <Field component="input" type="text" name="name" required />
                                             <label htmlFor="name">Name</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col s10" style={{marginBottom: 10}}>
                                             <label>Gender</label>
-                                            <select name={'gender'} defaultValue={''} onChange={this.onChangeState}>
+                                            <Field component="select" name={'gender'}>
                                                 <option value="" disabled>Choose your gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
-                                            </select>
+                                            </Field>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -64,25 +61,25 @@ class Signup extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <input type="text" onChange={this.onChangeState} name="mobileNo" required />
+                                            <Field component="input" type="text" name="mobileNo" required />
                                             <label htmlFor="phoneno">Mobile Number</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <input type="text" onChange={this.onChangeState} name="email" required />
+                                            <Field component="input" type="text" name="email" required />
                                             <label htmlFor="email">Email</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <input type="password" onChange={this.onChangeState} name="psw" required />
+                                            <Field component="input" type="password" name="psw" required />
                                             <label htmlFor="psw">Password</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <input type="password" onChange={this.onChangeState} name="pswrepeat" required />
+                                            <Field component="input" type="password" name="pswrepeat" required />
                                             <label htmlFor="psw-repeat">Repeat Password</label>
                                         </div>
                                     </div>
@@ -99,4 +96,15 @@ class Signup extends Component {
         )
     }
 }
-export default Signup;
+
+const signUpForm = reduxForm({
+    form: 'register' // a unique identifier for this form
+})(Signup);
+
+const mapToProps = (state, props) => {
+    return {
+        signUpForm: state.form.register
+    }
+};
+
+export default connect(mapToProps)(signUpForm);

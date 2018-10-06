@@ -32,6 +32,7 @@ const Home = (props) => {
                         <div className="card-content">
                             <p><i className="tiny material-icons">arrow_forward</i> Administration Roles – Add, Edit and Search Users</p>
                             <p><i className="tiny material-icons">arrow_forward</i> Admins can change Users permission roles</p>
+                            <p><i className="tiny material-icons">arrow_forward</i>View user properties.</p>
                         </div>
                         <div className="card-action">
                             <Link to={'/login'} className="waves-effect waves-light btn-small blue"><i className="material-icons right">play_arrow</i>Login</Link>

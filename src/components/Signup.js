@@ -7,8 +7,8 @@ class Signup extends Component {
 
         this.state = {
             name: '',
-            gender: 'male',
-            dob: '' || new Date(),
+            gender: '',
+            dob: '',
             mobileNo: '',
             email: '',
             psw: '',
@@ -17,10 +17,7 @@ class Signup extends Component {
     }
 
     onChangeState = (e) => {
-        var { name, value, checked } = e.target;
-        if(name === 'gender') {
-            value = checked ? 'female' : 'male';
-        }
+        var { name, value } = e.target;
         this.setState({
             [name]: value
         });
@@ -50,15 +47,13 @@ class Signup extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="input-field col s10">
-                                            <div className="switch">
-                                                <label>
-                                                    Male
-                                                    <input name={'gender'} onChange={this.onChangeState} type="checkbox" />
-                                                        <span className="lever"></span>
-                                                        Female
-                                                </label>
-                                            </div>
+                                        <div className="col s10" style={{marginBottom: 10}}>
+                                            <label>Gender</label>
+                                            <select name={'gender'} onChange={this.onChangeState}>
+                                                <option value="">Choose your gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div className="row">

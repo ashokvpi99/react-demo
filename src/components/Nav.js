@@ -11,7 +11,7 @@ class Nav extends Component {
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/login'}>Login</NavLink></li>
-                        <li><NavLink to={'/register'}>Register</NavLink></li>
+                        <li><a href={'/register'}>Register</a></li>
                     </ul>
                 </div>
             </nav>

@@ -30,7 +30,7 @@ class Signup extends Component {
 
     render() {
         const { isLoading } = this.props.register;
-        var isLoad = isLoading ? <Spinner active={ this.props.register.isLoading } /> : null;
+        var isLoad = isLoading && <Spinner active={ this.props.register.isLoading } />;
         return (
             <React.Fragment>
                 <br /><br />

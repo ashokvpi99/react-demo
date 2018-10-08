@@ -5,47 +5,55 @@ import { doGetUsers } from '../actions/Users';
 class Users extends Component {
 
     componentDidMount() {
-        this.props.doGetUsers({ url: 'http://10.100.110.120:8080/' });
+        this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
     }
 
     render() {
 
-        const { Users } = this.props.UsersData;
-
-        const userList = Users ? (
-            Users.map((user) => {
-                return (
-                    <React.Fragment>
-                        {/* <li class="collection-item avatar">
-                            <i class="material-icons circle red">play_arrow</i>
-                            <span class="title">Title</span>
-                            <p>First Line <br>
-                                Second Line
-                                </p>
-                                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                        </li> */}
-                    </React.Fragment>
-                )
-            })
-        ) : <h2 className={'center'}>Users not found!!</h2>
+        const { users } = this.props.UsersData;
+        const userList = users.length ? (
+                <table className="highlight responsive-table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Roles</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    { users.map((user) => {
+                        return (
+                        <tr key={user.id}>
+                        <td>{user.userId}</td>
+                        <td>{user.title}</td>
+                        <td>{user.body}</td>
+                        <td>{'-'}</td>
+                        </tr>
+                        )
+                    }) }
+                    </tbody>
+                </table>
+        ) : <h4 className={'center'}>Users not found!!</h4>;
 
         return (
-            <React.Fragment>
+            <div className={'container'}>
+                <div>
                 <h4>Users</h4>
-                <ul className="collection">
-                    {
-                        userList
-                    }
-                </ul>
-            </React.Fragment>
+                <hr />
+                </div>
+                <div className={'card-panel'}>
+                    { userList }
+                </div>
+            </div>
         )
     }
-};
+}
 
 const mapToProps = (state, props) => {
     return {
         UsersData: state.Users
     }
-}
+};
 
 export default connect(mapToProps, { doGetUsers })(Users);

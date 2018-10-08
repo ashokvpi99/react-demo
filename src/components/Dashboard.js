@@ -6,10 +6,10 @@ class Dashboard extends Component {
     render() {
         return (
             <React.Fragment>
-                <h4>Welcome, {User.name}</h4>
+                <h4>Welcome, {User.name}</h4><br />
                 <div className="col s6">
-                    <div className="card">
-                        <div className="card-content">
+                    <div className="container">
+                        <div className="card-panel">
                             <p>Name: { User.name }</p>
                             <p>Gender: { User.gender }</p>
                             <p>Date of Birth: { User.dob }</p>
@@ -22,6 +22,6 @@ class Dashboard extends Component {
             </React.Fragment>
         )
     }
-};
+}
 
 export default Dashboard;

@@ -3,18 +3,21 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { doLogin } from '../actions/Login';
 import Spinner from '../assets/spinner/Spinner';
+// import toastify from '../services/toastService';
+// import _ from 'lodash';
 
 class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
         let loginData = this.props.loginForm.values;
-        this.props.doLogin({data: loginData, url: 'http://10.100.110.22:8080/login'});
+        this.props.doLogin({data: loginData, url: 'http://10.100.110.120:8080/login'});
     };
+
     render() {
 
-        const { isLoading } = this.props.login;
-        const isLoad = isLoading ? <Spinner active={ this.props.login.isLoading } /> : null;
+        const { isLoading, isError, errStr } = this.props.loginData;
+        const isLoad = isLoading ? <Spinner active={ this.props.loginData.isLoading } /> : null;
 
         return (
             <React.Fragment>
@@ -29,7 +32,7 @@ class Login extends Component {
                                     <hr />
                                     <div className="row">
                                         <div className="input-field col s8">
-                                            <Field component={'input'} type="text" name="email" required />
+                                            <Field component={'input'} type="text" name="emailID" required />
                                             <label htmlFor="email">Email</label>
                                         </div>
                                     </div>
@@ -50,6 +53,12 @@ class Login extends Component {
                 {
                     isLoad
                 }
+                {
+                    isError !== null && !errStr ? window.localStorage.setItem('userDetails', JSON.stringify(this.props.loginData.login)) : null
+                }
+                {
+                    window.localStorage.getItem('userDetails') ? this.props.history.push('/dashboard') : null
+                }
             </React.Fragment>
         )
     }
@@ -62,7 +71,7 @@ const loginForm = reduxForm({
 const mapToProps = (state, props) => {
     return {
         loginForm: state.form.login,
-        login: state.Login
+        loginData: state.Login
     }
 };
 

@@ -8,8 +8,6 @@ const dataService = {
     },
 
     post: (url, data) => {
-        console.log('url........', url);
-        console.log('data...............', data);
        
         return new Promise((resolve, reject) => axios.post(url, data).then((data) => resolve(data)).catch((err) => reject(err)));
         

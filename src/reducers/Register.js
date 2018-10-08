@@ -1,6 +1,7 @@
 const initState = {
     register: {},
     isError: null,
+    errStr: '',
     isLoading: false,
     error: null
 };
@@ -19,7 +20,8 @@ const registerReducer = (state = initState, action) => {
                 ...state,
                 isLoading: false,
                 error: action.data,
-                isError: true
+                isError: true,
+                errStr: 'error'
             }
         }
         case 'DO_REGISTER_SUCCESS': {
@@ -27,7 +29,8 @@ const registerReducer = (state = initState, action) => {
                 ...state,
                 isLoading: false,
                 register: action.data,
-                isError: false
+                isError: false,
+                errStr: ''
             }
         }
         default:

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
 import { doRegister } from '../actions/Register';
-// import toast from '../services/toastService';
+// import toastify from '../services/toastService';
 import Spinner from '../assets/spinner/Spinner';
 
 class Signup extends Component {
@@ -25,13 +25,7 @@ class Signup extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         var signUpData = Object.assign(this.state, this.props.signUpForm.values);
-        this.props.doRegister({ data: signUpData, url: 'http://10.100.110.22:8080/registration' });
-        // if(this.props.register.isError) 
-        //     toast.errorToast('Registration Failed');
-        // else {
-        //     toast.successToast('Registration Success');
-        //     this.props.history.push('/login');
-        // }    
+        this.props.doRegister({ data: signUpData, url: 'http://10.100.110.120:8080/registration' })
     };
 
     render() {
@@ -43,7 +37,7 @@ class Signup extends Component {
                 <div className="container">
                     <div className="col s12 m5">
                         <div className="card-panel">
-                            <form onSubmit={this.handleSubmit}>
+                            <form onSubmit={() => this.handleSubmit}>
                                 <div className="container">
                                     <h1>Register</h1>
                                     <p>Please fill in this form to create an account.</p>

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
+import { doRegister } from '../actions/Register';
+// import toast from '../services/toastService';
+import Spinner from '../assets/spinner/Spinner';
 
 class Signup extends Component {
 
@@ -21,11 +24,19 @@ class Signup extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        var signUpdData = Object.assign(this.state, this.props.signUpForm.values);
-        console.log('signUpdData......', signUpdData);
+        var signUpData = Object.assign(this.state, this.props.signUpForm.values);
+        this.props.doRegister({ data: signUpData, url: 'http://10.100.110.22:8080/registration' });
+        // if(this.props.register.isError) 
+        //     toast.errorToast('Registration Failed');
+        // else {
+        //     toast.successToast('Registration Success');
+        //     this.props.history.push('/login');
+        // }    
     };
 
     render() {
+        const { isLoading } = this.props.register;
+        var isLoad = isLoading ? <Spinner active={ this.props.register.isLoading } /> : null;
         return (
             <React.Fragment>
                 <br /><br />
@@ -44,7 +55,7 @@ class Signup extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="col s10" style={{marginBottom: 10}}>
+                                        <div className="col s10" style={{ marginBottom: 10 }}>
                                             <label>Gender</label>
                                             <Field component="select" name={'gender'}>
                                                 <option value="" disabled>Choose your gender</option>
@@ -61,20 +72,20 @@ class Signup extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="text" name="mobileNo" required />
-                                            <label htmlFor="phoneno">Mobile Number</label>
+                                            <Field component="input" type="text" name="phoneNo" required />
+                                            <label htmlFor="phoneNo">Mobile Number</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="text" name="email" required />
-                                            <label htmlFor="email">Email</label>
+                                            <Field component="input" type="text" name="emailID" required />
+                                            <label htmlFor="emailID">Email</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="password" name="psw" required />
-                                            <label htmlFor="psw">Password</label>
+                                            <Field component="input" type="password" name="password" required />
+                                            <label htmlFor="password">Password</label>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -92,6 +103,7 @@ class Signup extends Component {
                         </div>
                     </div>
                 </div>
+                { isLoad }
             </React.Fragment>
         )
     }
@@ -103,8 +115,9 @@ const signUpForm = reduxForm({
 
 const mapToProps = (state, props) => {
     return {
-        signUpForm: state.form.register
+        signUpForm: state.form.register,
+        register: state.Register
     }
 };
 
-export default connect(mapToProps)(signUpForm);
+export default connect(mapToProps, { doRegister })(signUpForm);

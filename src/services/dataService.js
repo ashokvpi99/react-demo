@@ -1,27 +1,17 @@
 import axios from 'axios';
 
 const dataService = {
-    get: (url) => {
-        const options = {};
-        options.headers = {
-            "Content-type": "application/json; charset=UTF-8",
-            "Access-Control-Allow-Origin": '*'
-        };
-        
-        return new Promise((resolve, reject) => axios.get(url, options).then((data) => resolve(data)).catch((err) => reject(err)));
+    get: (url, options) => {
+        var param = {};
+        param.params = options;
+        return new Promise((resolve, reject) => axios.get(url, param).then((data) => resolve(data)).catch((err) => reject(err)));
     },
 
     post: (url, data) => {
-        const options = {};
-        options.body = data;
-        options.method = 'POST';
-        options.headers = {
-            "Content-type": "application/json; charset=UTF-8",
-            "Access-Control-Allow-Origin": '*'
-        };
-        options.body = options.body ? JSON.stringify(options.body) : {};
+        console.log('url........', url);
+        console.log('data...............', data);
        
-        return new Promise((resolve, reject) => axios.post(url, options).then((data) => resolve(data)).catch((err) => reject(err)));
+        return new Promise((resolve, reject) => axios.post(url, data).then((data) => resolve(data)).catch((err) => reject(err)));
         
     },
 

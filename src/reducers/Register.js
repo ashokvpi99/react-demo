@@ -1,32 +1,33 @@
 const initState = {
-    posts: [],
-    post: {},
-    isError: false,
+    register: {},
+    isError: null,
     isLoading: false,
     error: null
 };
 
-const postReducer = (state = initState, action) => {
+const registerReducer = (state = initState, action) => {
 
     switch (action.type) {
-        case 'GET_ALL_POST': {
+        case 'DO_REGISTER': {
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         }
-        case 'GET_ALL_POST_FAIL': {
+        case 'DO_REGISTER_FAIL': {
             return {
                 ...state,
                 isLoading: false,
-                error: action.data
+                error: action.data,
+                isError: true
             }
         }
-        case 'GET_ALL_POST_SUCCESS': {
+        case 'DO_REGISTER_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
-                posts: action.data
+                register: action.data,
+                isError: false
             }
         }
         default:
@@ -36,4 +37,4 @@ const postReducer = (state = initState, action) => {
     }
 };
 
-export default postReducer;
+export default registerReducer;

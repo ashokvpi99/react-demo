@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Home from './components/Home';
 import Register from './components/Signup';
@@ -15,6 +16,15 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <NavBar/>
+          <ToastContainer position="top-right"
+                              autoClose={3000}
+                              hideProgressBar
+                              newestOnTop
+                              closeOnClick
+                              rtl={false}
+                              pauseOnVisibilityChange
+                              draggable
+                              pauseOnHover />
           <Switch>
             <Route exact component={Home} path={'/'} />
             <Route component={Register} path={'/register'} />

@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form'
-import Post from './Post';
+import Register from './Register';
+import Login from './Login';
 
 const rootReducer = combineReducers({
-    postState: Post,
-    form: formReducer
+    form: formReducer,
+    Register,
+    Login
 });
 
 export default rootReducer;

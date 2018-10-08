@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { doLogin } from '../actions/Login';
+import Spinner from '../assets/spinner/Spinner';
 
 class Login extends Component {
-    // constructor(props) {
-    //     super(props);
-    //
-    //     this.state = {
-    //         email: '',
-    //         psw: ''
-    //     };
-    // }
-    //
-    // onChangeSetState = (e) => {
-    //     const { name, value } = e.target;
-    //     this.setState({
-    //         [name]: value
-    //     })
-    // };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('loginForm....', this.props.loginForm.values)
+        let loginData = this.props.loginForm.values;
+        this.props.doLogin({data: loginData, url: 'http://10.100.110.22:8080/login'});
     };
     render() {
+
+        const { isLoading } = this.props.login;
+        const isLoad = isLoading ? <Spinner active={ this.props.login.isLoading } /> : null;
+
         return (
             <React.Fragment>
                 <br /><br />
@@ -43,7 +35,7 @@ class Login extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s8">
-                                            <Field component={'input'} type="password" name="psw" required />
+                                            <Field component={'input'} type="password" name="password" required />
                                             <label htmlFor="psw">Password</label>
                                         </div>
                                     </div>
@@ -55,6 +47,9 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
+                {
+                    isLoad
+                }
             </React.Fragment>
         )
     }
@@ -66,8 +61,9 @@ const loginForm = reduxForm({
 
 const mapToProps = (state, props) => {
     return {
-        loginForm: state.form.login
+        loginForm: state.form.login,
+        login: state.Login
     }
 };
 
-export default connect(mapToProps)(loginForm);
+export default connect(mapToProps, { doLogin })(loginForm);

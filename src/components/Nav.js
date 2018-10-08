@@ -4,12 +4,13 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 class Nav extends Component {
 
     render() {
-        const userInfo = window.localStorage.getItem('userDetails');
-        const userDetails = window.localStorage.getItem('userDetails') ? (
+        const userInfo = window.localStorage.getItem('userDetails') ? JSON.parse(window.localStorage.getItem('userDetails')) : null;
+        const isUserInfo = userInfo ? userInfo.roles === 'admin' ?  <li><NavLink to={'/users'}>Users</NavLink></li> : null : null;
+        const userDetails =userInfo ? (
             <React.Fragment>
                 <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
                 {
-                    userInfo.role === 'admin' ?  <li><NavLink to={'/users'}>Users</NavLink></li> : null
+                    isUserInfo
 
                 }
                 <li onClick={(e) => {

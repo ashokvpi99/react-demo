@@ -17,7 +17,8 @@ class Login extends Component {
     render() {
 
         const { isLoading, isError, errStr } = this.props.loginData;
-        const isLoad = isLoading ? <Spinner active={ this.props.loginData.isLoading } /> : null;
+        const isLoad = isLoading && <Spinner active={ this.props.loginData.isLoading } />;
+
 
         return (
             <React.Fragment>
@@ -54,10 +55,10 @@ class Login extends Component {
                     isLoad
                 }
                 {
-                    isError !== null && !errStr ? window.localStorage.setItem('userDetails', JSON.stringify(this.props.loginData.login)) : null
+                    isError !== null && !errStr && window.localStorage.setItem('userDetails', JSON.stringify(this.props.loginData.login.data))
                 }
                 {
-                    window.localStorage.getItem('userDetails') ? this.props.history.push('/dashboard') : null
+                    window.localStorage.getItem('userDetails') && this.props.history.push('/dashboard')
                 }
             </React.Fragment>
         )

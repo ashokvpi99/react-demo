@@ -18,7 +18,7 @@ class Nav extends Component {
                     isUserInfo
 
                 }
-                <li onClick={() => this.navigateToLogin()}>Logout</li>
+                &nbsp;<li style={{marginRight: 15, cursor: 'pointer'}} onClick={() => this.navigateToLogin()}>Logout</li>
             </React.Fragment>
         ) : (
                 <React.Fragment>

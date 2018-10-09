@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Dashboard extends Component {
 
     componentWillMount() {
-        this.user = window.localStorage.getItem('userDetails') ? JSON.parse(window.localStorage.getItem('userDetails')) : {};
+        this.user = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
     }
     render() {
         return (

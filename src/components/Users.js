@@ -5,7 +5,12 @@ import { doGetUsers } from '../actions/Users';
 class Users extends Component {
 
     componentDidMount() {
-        this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
+        const userObj = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
+
+        if(userObj && userObj.roles !== 'manager')
+            this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
+        else
+            this.props.doGetUsers({ url: 'http://10.100.110.120:8080/manager/users/' + userObj.userId });   
     }
 
     render() {

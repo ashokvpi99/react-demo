@@ -19,7 +19,7 @@ const Home = (props) => {
                             <p>User management is a core part to any directory service and is a basic security essential for any organization. User management enables admins to control user access and on-board and off-board users to and from IT resources.</p>
                         </div>
                         <div className="card-action">
-                            <Link to={'/register'} className="waves-effect waves-light btn-small green"><i className="material-icons right">power</i>Register</Link>
+                            <a href={'/register'} className="waves-effect waves-light btn-small green"><i className="material-icons right">power</i>Register</a>
                         </div>
                     </div>
                 </div>

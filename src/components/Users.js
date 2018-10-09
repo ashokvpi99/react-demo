@@ -24,11 +24,11 @@ class Users extends Component {
                     <tbody>
                     { users.map((user) => {
                         return (
-                        <tr key={user.id}>
-                        <td>{user.userId}</td>
-                        <td>{user.title}</td>
-                        <td>{user.body}</td>
-                        <td>{'-'}</td>
+                        <tr key={user._id}>
+                        <td>{user.name}</td>
+                        <td>{user.emailID}</td>
+                        <td>{user.phoneNo}</td>
+                        <td>{user.roles}</td>
                         </tr>
                         )
                     }) }

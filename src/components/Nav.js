@@ -4,8 +4,8 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 class Nav extends Component {
 
     render() {
-        const userInfo = window.localStorage.getItem('userDetails') ? JSON.parse(window.localStorage.getItem('userDetails')) : null;
-        const isUserInfo = userInfo ? userInfo.roles === 'admin' ?  <li><NavLink to={'/users'}>Users</NavLink></li> : null : null;
+        const userInfo = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
+        const isUserInfo = userInfo ? userInfo.roles === 'admin' || userInfo.roles === 'manager' ?  <li><NavLink to={'/users'}>Users</NavLink></li> : null : null;
         const userDetails =userInfo ? (
             <React.Fragment>
                 <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
@@ -30,7 +30,9 @@ class Nav extends Component {
             <nav>
                 <div className="nav-wrapper">
                     &nbsp; &nbsp;
-                    <Link to={'/'} className="brand-logo">User Management</Link>
+                    {
+                        userInfo ? <span className="brand-logo">User Management</span> : <Link to={'/'} className="brand-logo">User Management</Link>
+                    }
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         {userDetails}
                     </ul>

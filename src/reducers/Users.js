@@ -30,7 +30,7 @@ const userReducer = (state = initState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                users: action.data.data,
+                users: action.data.data.data,
                 isError: false,
                 errStr: ''
             }

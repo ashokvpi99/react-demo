@@ -8,6 +8,7 @@ import Login from './components/Login';
 import NavBar from './components/Nav';
 import Dashboard from './components/Dashboard';
 import Users from './components/Users';
+import PrivateRoute from './components/Private';
 
 class App extends Component {
 
@@ -29,8 +30,8 @@ class App extends Component {
             <Route exact component={Home} path={'/'} />
             <Route component={Register} path={'/register'} />
             <Route component={Login} path={'/login'} />
-            <Route component={Dashboard} path={'/dashboard'} />
-            <Route component={Users} path={'/users'} />
+            <PrivateRoute component={Dashboard} path={'/dashboard'} />
+            <PrivateRoute component={Users} path={'/users'} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>

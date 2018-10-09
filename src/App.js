@@ -17,7 +17,7 @@ class App extends Component {
         <React.Fragment>
           <NavBar/>
           <ToastContainer position="top-right"
-                              autoClose={3000}
+                              autoClose={1000}
                               hideProgressBar
                               newestOnTop
                               closeOnClick

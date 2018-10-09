@@ -24,7 +24,7 @@ class Signup extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         var signUpData = Object.assign(this.state, this.props.signUpForm.values);
-        this.props.doRegister({ data: signUpData, url: 'http://10.100.110.120:8080/registration' })
+        this.props.doRegister({ data: signUpData, url: 'http://10.100.110.120:8080/registration', history: this.props.history })
     };
 
     render() {
@@ -36,7 +36,7 @@ class Signup extends Component {
                 <div className="container">
                     <div className="col s12 m5">
                         <div className="card-panel">
-                            <form onSubmit={() => this.handleSubmit}>
+                            <form onSubmit={this.handleSubmit}>
                                 <div className="container">
                                     <h1>Register</h1>
                                     <p>Please fill in this form to create an account.</p>

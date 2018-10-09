@@ -7,7 +7,12 @@ import * as loginTypesAction from '../actions/Login';
 function* doLogin(obj) {
     try {
         const loginData = yield call(dataService.post, obj.data.url, obj.data.data);
-        yield put(loginTypesAction.doLoginSuccess(loginData))
+        if(loginData.data && loginData.data.data) {
+            window.localStorage.setItem('userDetails', JSON.stringify(loginData.data.data))
+            yield put(loginTypesAction.doLoginSuccess(loginData))
+            const { history } = obj.data;
+            history && history.push('/dashboard')
+        }       
     }
     catch(error) {
         yield put(loginTypesAction.doLoginFail(error));

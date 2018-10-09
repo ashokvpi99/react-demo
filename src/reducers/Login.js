@@ -3,7 +3,8 @@ const initState = {
     isError: null,
     errStr: '',
     isLoading: false,
-    error: null
+    error: null,
+    isSuccess: false
 };
 
 const loginReducer = (state = initState, action) => {
@@ -21,7 +22,8 @@ const loginReducer = (state = initState, action) => {
                 isLoading: false,
                 error: action.data,
                 isError: true,
-                errStr: 'error'
+                errStr: 'error',
+                isSuccess: false
             }
         }
         case 'DO_LOGIN_SUCCESS': {
@@ -30,7 +32,8 @@ const loginReducer = (state = initState, action) => {
                 isLoading: false,
                 login: action.data.data,
                 isError: false,
-                errStr: ''
+                errStr: '',
+                isSuccess: true
             }
         }
         default:

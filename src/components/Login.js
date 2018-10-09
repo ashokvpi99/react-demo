@@ -3,20 +3,18 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { doLogin } from '../actions/Login';
 import Spinner from '../assets/spinner/Spinner';
-// import toastify from '../services/toastService';
-// import _ from 'lodash';
 
 class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
         let loginData = this.props.loginForm.values;
-        this.props.doLogin({data: loginData, url: 'http://10.100.110.120:8080/login'});
+        this.props.doLogin({data: loginData, url: 'http://10.100.110.120:8080/login', history: this.props.history});
     };
 
     render() {
 
-        const { isLoading, isError, errStr } = this.props.loginData;
+        const { isLoading } = this.props.loginData;
         const isLoad = isLoading && <Spinner active={ this.props.loginData.isLoading } />;
 
 
@@ -53,12 +51,6 @@ class Login extends Component {
                 </div>
                 {
                     isLoad
-                }
-                {
-                    isError !== null && !errStr && window.localStorage.setItem('userDetails', JSON.stringify(this.props.loginData.login.data))
-                }
-                {
-                    window.localStorage.getItem('userDetails') && this.props.history.push('/dashboard')
                 }
             </React.Fragment>
         )

@@ -3,6 +3,11 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 
 class Nav extends Component {
 
+    navigateToLogin() {
+        window.localStorage.clear();
+        this.props.history.push('/login');
+    }
+
     render() {
         const userInfo = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
         const isUserInfo = userInfo ? userInfo.roles === 'admin' || userInfo.roles === 'manager' ?  <li><NavLink to={'/users'}>Users</NavLink></li> : null : null;
@@ -13,10 +18,7 @@ class Nav extends Component {
                     isUserInfo
 
                 }
-                <li onClick={(e) => {
-                    e.preventDefault();
-                    window.localStorage.clear();
-                }}><NavLink to={'/login'}>Logout</NavLink></li>
+                <li onClick={() => this.navigateToLogin()}>Logout</li>
             </React.Fragment>
         ) : (
                 <React.Fragment>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux';
 import { doRegister } from '../actions/Register';
-// import toastify from '../services/toastService';
 import Spinner from '../assets/spinner/Spinner';
 
 class Signup extends Component {

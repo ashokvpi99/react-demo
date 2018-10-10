@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { doGetUsers, doDeleteUser } from '../actions/Users';
 
+
 class Users extends Component {
 
     componentDidMount() {
-        const userObj = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
+    const userObj = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
 
         if(userObj && userObj.roles !== 'manager')
             this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
@@ -25,8 +26,11 @@ class Users extends Component {
     }
 
     render() {
-
-        const { users } = this.props.UsersData;
+        
+        const userObj = window.localStorage.getItem('userDetails') && JSON.parse(window.localStorage.getItem('userDetails'));
+        let { users } = this.props.UsersData;
+        if(users.length)
+            users = users.filter((user) => user._id !== userObj._id);
         const userList = users.length ? (
                 <table className="highlight responsive-table">
                     <thead>

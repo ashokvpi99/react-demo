@@ -43,48 +43,55 @@ class Signup extends Component {
                                     <hr />
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="text" name="name" required />
+                                            <Field component="input" type="text" name="name" className={'validate'} required />
                                             <label htmlFor="name">Name</label>
+                                            <span className={'helper-text'} data-error={'Name Required'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col s10" style={{ marginBottom: 10 }}>
                                             <label>Gender</label>
-                                            <Field component="select" name={'gender'}>
+                                            <Field component="select" name={'gender'} className={'validate'}>
                                                 <option value="" disabled>Choose your gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </Field>
+                                            <span className={'helper-text'} data-error={'Choose Gender'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <input type="text" name={'dob'} onSelect={this.onChangeState} className="datepicker" />
+                                            <input type="text" name={'dob'} onSelect={this.onChangeState} className="datepicker validate" />
                                             <label htmlFor="dob">Date of Birth</label>
+                                            <span className={'helper-text'} data-error={'Select Date of Birth'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="text" name="phoneNo" required />
+                                            <Field component="input" type="text" name="phoneNo" className={'validate'} required />
                                             <label htmlFor="phoneNo">Mobile Number</label>
+                                            <span className={'helper-text'} data-error={'Mobile No Required'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="text" name="emailID" required />
+                                            <Field component="input" type="text" name="emailID" className={'validate'} required />
                                             <label htmlFor="emailID">Email</label>
+                                            <span className={'helper-text'} data-error={'Invalid Email'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="password" name="password" required />
+                                            <Field component="input" type="password" name="password" className={'validate'} required />
                                             <label htmlFor="password">Password</label>
+                                            <span className={'helper-text'} data-error={'Password Required'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s10">
-                                            <Field component="input" type="password" name="pswrepeat" required />
+                                            <Field component="input" type="password" name="pswrepeat" className={'validate'} required />
                                             <label htmlFor="psw-repeat">Repeat Password</label>
+                                            <span className={'helper-text'} data-error={'Confirm Password Required'}></span>
                                         </div>
                                     </div>
                                     <p>By creating an account you agree to our <a style={{ color: 'dodgerblue' }}>Terms &amp; Privacy</a>.</p>

@@ -160,8 +160,8 @@ class Users extends Component {
                     </div>
                     </div>
                     <div className="modal-footer">
-                        <a className="modal-close waves-effect btn waves-green btn-flat">Cancel<i class="small material-icons right">clear</i></a>
-                        <a onClick={this.updateUser} className="modal-close waves-effect btn waves-green btn-flat">Update<i class="small material-icons right">check</i></a>
+                        <a className="modal-close waves-effect btn waves-green btn-flat">Cancel<i className="small material-icons right">clear</i></a>
+                        <a onClick={this.updateUser} className="modal-close waves-effect btn waves-green btn-flat">Update<i className="small material-icons right">check</i></a>
                     </div>
                 </div>
             </div>

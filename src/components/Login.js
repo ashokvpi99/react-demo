@@ -31,14 +31,16 @@ class Login extends Component {
                                     <hr />
                                     <div className="row">
                                         <div className="input-field col s8">
-                                            <Field component={'input'} type="text" name="emailID" required />
+                                            <Field component={'input'} type="email" name="emailID" className={'validate email'} required />
                                             <label htmlFor="email">Email</label>
+                                            <span className={'helper-text'} data-error={'Invalid Email'}></span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s8">
-                                            <Field component={'input'} type="password" name="password" required />
+                                            <Field component={'input'} type="password" className={'validate password'} name="password" required />
                                             <label htmlFor="psw">Password</label>
+                                            <span className={'helper-text'} data-error={'Password cannot be empty'}></span>
                                         </div>
                                     </div>
                                     <div className="clearfix">

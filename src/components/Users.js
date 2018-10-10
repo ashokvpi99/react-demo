@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doGetUsers } from '../actions/Users';
+import { doGetUsers, doDeleteUser } from '../actions/Users';
 
 class Users extends Component {
 
@@ -11,6 +11,17 @@ class Users extends Component {
             this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
         else
             this.props.doGetUsers({ url: 'http://10.100.110.120:8080/manager/users/' + userObj.userId });   
+    }
+
+    deletedUser = (id) => {
+        if(window.confirm('Are you sure want to Delete ?')){
+            this.props.doDeleteUser({url: 'http://10.100.110.120:8080/delete/'+ id});
+            setTimeout(() => {
+                this.props.doGetUsers({ url: 'http://10.100.110.120:8080/users' });
+            }, 1000)
+        }
+        else 
+            return false;
     }
 
     render() {
@@ -24,6 +35,7 @@ class Users extends Component {
                         <th>Email</th>
                         <th>Phone No</th>
                         <th>Roles</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,6 +46,7 @@ class Users extends Component {
                         <td>{user.emailID}</td>
                         <td>{user.phoneNo}</td>
                         <td>{user.roles}</td>
+                        <td><i style={{cursor: 'pointer'}} onClick={() => this.deletedUser(user.userId)} className="small material-icons">delete</i></td>
                         </tr>
                         )
                     }) }
@@ -61,4 +74,4 @@ const mapToProps = (state, props) => {
     }
 };
 
-export default connect(mapToProps, { doGetUsers })(Users);
+export default connect(mapToProps, { doGetUsers, doDeleteUser })(Users);

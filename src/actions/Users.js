@@ -20,3 +20,24 @@ export const doGetUsersFail = (data) => {
         data,
     }
 };
+
+export const doDeleteUser = (data) => {
+    return {
+        type: userTypes.DO_DELETE_USER,
+        data,
+    }
+};
+
+export const doDeleteUserSuccess = (data) => {
+    return {
+        type: userTypes.DO_DELETE_USER_SUCCESS,
+        data,
+    }
+};
+
+export const doDeleteUserFail = (data) => {
+    return {
+        type: userTypes.DO_DELETE_USER_SUCCESS,
+        data,
+    }
+};
